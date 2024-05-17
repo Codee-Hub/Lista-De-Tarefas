@@ -2,7 +2,7 @@ package br.ucsal.listadetarefas.model.utils;
 
 import br.ucsal.listadetarefas.model.entities.PessoaComPermissao;
 import br.ucsal.listadetarefas.model.enums.NivelDePermissao;
-import br.ucsal.listadetarefas.model.exceptions.PessoaSemPermissao;
+import br.ucsal.listadetarefas.model.services.exceptions.PessoaSemPermissao;
 
 public class Utils {
 
