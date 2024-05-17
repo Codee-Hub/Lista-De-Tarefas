@@ -7,13 +7,14 @@ public abstract class Pessoa {
 	
 	protected Integer id;
 	protected String nome;
-	
-	public Pessoa() {
-		
+
+	public Pessoa( String nome) {
+		this.id = GerarId();
+		this.nome = nome;
 	}
 
 	public Pessoa(Integer id, String nome) {
-		this.id = GerarId();
+		this.id = id;
 		this.nome = nome;
 	}
 

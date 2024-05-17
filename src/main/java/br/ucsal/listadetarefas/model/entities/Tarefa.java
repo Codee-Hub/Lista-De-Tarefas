@@ -6,9 +6,14 @@ public abstract class Tarefa {
     protected Integer id;
     protected String descricao;
 
-    public Tarefa(String descricao, Integer id) {
+    public Tarefa(String descricao) {
         this.descricao = descricao;
         this.id = GerarId();
+    }
+
+    public Tarefa(Integer id, String descricao) {
+        this.descricao = descricao;
+        this.id = id;
     }
 
     private Integer GerarId() {

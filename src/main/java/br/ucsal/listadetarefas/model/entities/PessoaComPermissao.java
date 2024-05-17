@@ -6,8 +6,9 @@ public class PessoaComPermissao extends Pessoa {
 	
 	private NivelDePermissao nivelDePermissao;
 
-	public PessoaComPermissao(Integer id, String nome) {
-		super(id, nome);
+	public PessoaComPermissao( String nome, NivelDePermissao nivelDePermissao) {
+		super(nome);
+		this.nivelDePermissao = nivelDePermissao;
 	}
 	
 	public PessoaComPermissao(Integer id, String nome, NivelDePermissao nivelDePermissao) {
