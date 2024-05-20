@@ -11,18 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ListaDeTarefasService {
+public class TarefasComPessoaService {
 
-    private List<TarefaComPessoa> tarefas = new ArrayList<>();
+    private List<TarefaComPessoa> tarefasComPessoa = new ArrayList<>();
 
-    public List<TarefaComPessoa> getTarefas() {
-        return tarefas;
+    public List<TarefaComPessoa> getTarefasComPessoa() {
+        return tarefasComPessoa;
     }
 
-    public Tarefa getTarefaById(int id) {
+    public TarefaComPessoa getTarefaComPessoaById(int id) {
         try {
-            if(tarefas.stream().filter(p -> p.getId() == id).findFirst().isPresent()) {
-                return tarefas.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+            if(tarefasComPessoa.stream().filter(p -> p.getId() == id).findFirst().isPresent()) {
+                return tarefasComPessoa.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
             } else {
                 throw new TarefaNaoEncontrada("Tarefa não encontrada");
             }
@@ -32,10 +32,10 @@ public class ListaDeTarefasService {
         }
     }
 
-    public void insertTarefas(TarefaComPessoa tarefaComPessoa)  {
+    public void insertTarefaComPessoa(TarefaComPessoa tarefaComPessoa)  {
         try {
             if(Utils.ChecarNivelDePermissao(tarefaComPessoa.getPessoa(), tarefaComPessoa.getNivel())){
-                tarefas.add(tarefaComPessoa);
+                tarefasComPessoa.add(tarefaComPessoa);
                 System.out.println("Tarefa sucesso");
             } else{
                 throw new PessoaSemPermissao("A Pessoa designada para essa tarefa nao tem a permissao necessaria para realiza-la");
@@ -45,10 +45,10 @@ public class ListaDeTarefasService {
         }
     }
 
-    public void deleteTarefaById(Integer id)  {
+    public void deleteTarefaComPessoaById(Integer id)  {
         try {
-            if(tarefas.stream().filter(p -> p.getId() == id).findFirst().isPresent()) {
-                tarefas = tarefas.stream().filter(Tarefa -> Tarefa.getId() != id).collect(Collectors.toList());
+            if(tarefasComPessoa.stream().filter(p -> p.getId() == id).findFirst().isPresent()) {
+                tarefasComPessoa = tarefasComPessoa.stream().filter(Tarefa -> Tarefa.getId() != id).collect(Collectors.toList());
                 System.out.println("Tarefa sucesso");
             } else {
                 throw new TarefaNaoEncontrada("Tarefa não encontrada");
@@ -58,12 +58,12 @@ public class ListaDeTarefasService {
         }
     }
 
-    public void updateTarefas(TarefaComPessoa tarefaComPermissao)  {
+    public void updateTarefaComPessoa(TarefaComPessoa tarefaComPessoa)  {
         try {
-            if(tarefas.stream().filter(p -> p.getId() == tarefaComPermissao.getId()).findFirst().isPresent()) {
-                if(Utils.ChecarNivelDePermissao(tarefaComPermissao.getPessoa(), tarefaComPermissao.getNivel())){
-                    deleteTarefaById(tarefaComPermissao.getId());
-                    insertTarefas(tarefaComPermissao);
+            if(tarefasComPessoa.stream().filter(p -> p.getId() == tarefaComPessoa.getId()).findFirst().isPresent()) {
+                if(Utils.ChecarNivelDePermissao(tarefaComPessoa.getPessoa(), tarefaComPessoa.getNivel())){
+                    deleteTarefaComPessoaById(tarefaComPessoa.getId());
+                    insertTarefaComPessoa(tarefaComPessoa);
                     System.out.println("Tarefa modificada com sucesso");
                 } else{
                     throw new PessoaSemPermissao("A Pessoa designada para essa tarefa nao tem a permissao necessaria para realiza-la");
@@ -76,11 +76,11 @@ public class ListaDeTarefasService {
         }
     }
 
-    public List<TarefaComPessoa> getTarefasByPessoa(int idPessoa) {
-        return tarefas.stream().filter(tarefa -> tarefa.getId() == idPessoa).collect(Collectors.toList());
+    public List<TarefaComPessoa> getTarefaByPessoa(int idPessoa) {
+        return tarefasComPessoa.stream().filter(tarefa -> tarefa.getId() == idPessoa).collect(Collectors.toList());
     }
 
-    public List<TarefaComPessoa> getTarefasPendentes() {
-        return tarefas.stream().filter(tarefa -> tarefa.getStatus() == StatusDaTarefa.PENDENTE).collect(Collectors.toList());
+    public List<TarefaComPessoa> getTarefasComPessoaPendentes() {
+        return tarefasComPessoa.stream().filter(tarefa -> tarefa.getStatus() == StatusDaTarefa.PENDENTE).collect(Collectors.toList());
     }
 }
