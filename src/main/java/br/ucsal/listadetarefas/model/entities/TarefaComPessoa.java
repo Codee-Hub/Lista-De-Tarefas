@@ -9,18 +9,28 @@ public class TarefaComPessoa extends Tarefa{
     private StatusDaTarefa status;
     private NivelDePermissao nivel;
 
-    public TarefaComPessoa(String descricao, PessoaComPermissao pessoa, StatusDaTarefa status, NivelDePermissao nivel) {
+    public TarefaComPessoa(String descricao, PessoaComPermissao pessoa, NivelDePermissao nivel) {
         super(descricao);
         this.pessoa = pessoa;
-        this.status = status;
+        this.status = StatusDaTarefa.PENDENTE;
         this.nivel = nivel;
     }
 
-    public TarefaComPessoa(Integer id ,String descricao, PessoaComPermissao pessoa, StatusDaTarefa status, NivelDePermissao nivel) {
+    public TarefaComPessoa(Integer id ,String descricao, PessoaComPermissao pessoa, NivelDePermissao nivel) {
         super(id, descricao);
         this.pessoa = pessoa;
-        this.status = status;
+        this.status = StatusDaTarefa.PENDENTE;
         this.nivel = nivel;
+    }
+
+    @Override
+    public String toString() {
+        return ", id=" + id +
+                ", descricao='" + descricao + '\'' +
+                ", pessoa=" + pessoa.getNome() +
+                "nivel=" + nivel +
+                ", status=" + status +
+                '}';
     }
 
     public NivelDePermissao getNivel() {
@@ -45,5 +55,9 @@ public class TarefaComPessoa extends Tarefa{
 
     public void setPessoa(PessoaComPermissao pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public void concluirTarefaComPessoa(){
+        this.status = StatusDaTarefa.CONCLUIDO;
     }
 }

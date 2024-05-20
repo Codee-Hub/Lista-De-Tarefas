@@ -1,6 +1,5 @@
 package br.ucsal.listadetarefas.model.services;
 
-import br.ucsal.listadetarefas.model.entities.Tarefa;
 import br.ucsal.listadetarefas.model.entities.TarefaComPessoa;
 import br.ucsal.listadetarefas.model.enums.StatusDaTarefa;
 import br.ucsal.listadetarefas.model.services.exceptions.PessoaSemPermissao;
@@ -77,10 +76,18 @@ public class TarefasComPessoaService {
     }
 
     public List<TarefaComPessoa> getTarefaByPessoa(int idPessoa) {
-        return tarefasComPessoa.stream().filter(tarefa -> tarefa.getId() == idPessoa).collect(Collectors.toList());
+        return tarefasComPessoa.stream().filter(tarefa -> tarefa.getPessoa().getId() == idPessoa).collect(Collectors.toList());
     }
 
     public List<TarefaComPessoa> getTarefasComPessoaPendentes() {
         return tarefasComPessoa.stream().filter(tarefa -> tarefa.getStatus() == StatusDaTarefa.PENDENTE).collect(Collectors.toList());
+    }
+
+    public void concluirTarefaComPessoa(int idTarefaComPessoa){
+        for(TarefaComPessoa tarefa : tarefasComPessoa){
+            if(tarefa.getId() == idTarefaComPessoa){
+                tarefa.concluirTarefaComPessoa();
+            }
+        }
     }
 }

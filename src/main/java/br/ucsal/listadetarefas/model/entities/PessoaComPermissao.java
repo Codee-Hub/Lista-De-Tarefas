@@ -16,6 +16,13 @@ public class PessoaComPermissao extends Pessoa {
 		this.nivelDePermissao = nivelDePermissao;
 	}
 
+	@Override
+	public String toString() {
+		return ", id=" + id +
+				", nome='" + nome + '\'' +
+				'}'+"nivelDePermissao=" + nivelDePermissao;
+	}
+
 	public NivelDePermissao getNivelDePermissao() {
 		return nivelDePermissao;
 	}

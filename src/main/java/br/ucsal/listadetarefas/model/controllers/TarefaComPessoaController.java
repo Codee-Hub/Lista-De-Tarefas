@@ -36,4 +36,8 @@ public class TarefaComPessoaController {
     public List<TarefaComPessoa> getTarefasComPessoaByPessoa(int id){
         return service.getTarefaByPessoa(id);
     }
+
+    public void concluirTarefaComPessoa(int id) {
+        service.concluirTarefaComPessoa(id);
+    }
 }
