@@ -6,7 +6,7 @@ import br.ucsal.listadetarefas.model.services.exceptions.PessoaSemPermissao;
 
 public class Utils {
 
-	public static Boolean ChecarNivelDePermissao(PessoaComPermissao pessoa, NivelDePermissao permissaoDaTerefa) {
+	public static Boolean ChecarNivelDePermissao(PessoaComPermissao pessoa, NivelDePermissao permissaoDaTarefa) {
 
 		NivelDePermissao nivelDePermissaoPessoa = pessoa.getNivelDePermissao();
 
@@ -15,12 +15,12 @@ public class Utils {
 			case AVANÇADO:
 				return true;
 			case INTERMEDIARIO:
-				if (permissaoDaTerefa != NivelDePermissao.AVANÇADO) {
+				if (permissaoDaTarefa != NivelDePermissao.AVANÇADO) {
 					return true;
 				}
 				break;
 			case BASICO :
-				if (permissaoDaTerefa == NivelDePermissao.BASICO) {
+				if (permissaoDaTarefa == NivelDePermissao.BASICO) {
 					return true;
 				}
 				break;
